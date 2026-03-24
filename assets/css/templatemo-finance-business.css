@@ -1,10 +1,4 @@
-/* 
 
-TemplateMo - Green Valley
-
-https://templatemo.com/tm-545-finance-business
-
-*/
 
 body {
   font-family: 'Poppins', sans-serif;
@@ -190,7 +184,7 @@ a.filled-buttons:hover {
 /* Sub Header Style */
 
 .sub-header {
-	background-color: #0A2540;
+	background-color: #a4c639;
 	height: 46px;
 	line-height: 46px;
 }
@@ -543,7 +537,7 @@ ul.slick-dots {
 /* Request Form */
 
 .request-form {
-	background-color: #0A2540;
+	background-color: #a4c639;
 	padding: 40px 0px;
 	color: #fff;
 }
@@ -1515,7 +1509,7 @@ footer .contact-form button.filled-button:hover {
   background-image: url("../images/swiming.png");
 }
 .ice-card4 {
-  background-image: url("../images/crushed-ice.png");
+  background-image: url("../images/crushed-ice-1.png");
 }
 .ice-card5 {
   background-image: url("../images/Agro.png");
