@@ -47,7 +47,7 @@
               <li><a href="#"><i class="fa fa-facebook"></i></a></li>
               <li><a href="#"><i class="fa fa-twitter"></i></a></li>
               <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-              <li><a href="#"><i class="fa fa-behance"></i></a></li>
+              <li><a href="#"><i class="fa fa-instagram"></i></a></li>
             </ul>
           </div>
         </div>
@@ -161,7 +161,7 @@
               <div class="down-content">
                 <h4>Industrial Block Ice</h4>
                 <p>Massive cooling power for fisheries, concrete cooling, and large-scale event storage</p>
-                <a href="" class="filled-button">Read More</a>
+                <!-- <a href="" class="filled-button">Read More</a> -->
               </div>
             </div>
           </div>
@@ -171,7 +171,7 @@
               <div class="down-content">
                 <h4>Cylindrical Tube Ice</h4>
                 <p>Perfect for juices, soft drinks, and restaurants. Melt slowly and keep beverages cold longer.</p>
-                <a href="" class="filled-button">Read More</a>
+                <!-- <a href="" class="filled-button">Read More</a> -->
               </div>
             </div>
           </div>
@@ -185,7 +185,7 @@
                 <p>
                   Slow-melting ice cubes ideal for hotels, bars, restaurants, and catering services. 
                 </p>
-                <a href="" class="filled-button">Read More</a>
+                <!-- <a href="" class="filled-button">Read More</a> -->
               </div>
             </div>
           </div>
@@ -199,7 +199,7 @@
               <div class="down-content">
                 <h4>Freshness-Preserving Flake Ice</h4>
                 <p>Soft, flexible ice flakes that provide uniform cooling coverage, ideal for fisheries, seafood preservation, and food processing industries.</p>
-                <a href="" class="filled-button">Read More</a>
+                <!-- <a href="" class="filled-button">Read More</a> -->
               </div>
             </div>
           </div>
@@ -209,7 +209,7 @@
               <div class="down-content">
                 <h4>Reusable Gel Ice Packs</h4>
                 <p>Long-lasting gel-based cooling packs suitable for medical transport, food delivery, and temperature-controlled storage solutions.</p>
-                <a href="" class="filled-button">Read More</a>
+                <!-- <a href="" class="filled-button">Read More</a> -->
               </div>
             </div>
           </div>
@@ -220,7 +220,7 @@
               <div class="down-content">
                 <h4>Grade Dry Ice</h4>
                 <p>High-quality, clean crushed ice for preserving fish and seafood in the fisheries industry.</p>
-                <a href="" class="filled-button">Read More</a>
+                <!-- <a href="" class="filled-button">Read More</a> -->
               </div>
             </div>
           </div>
@@ -243,7 +243,7 @@
               <h2>Reliable Ice Solutions <em> For Every Industry</em></h2>
               <p><em>Greenvalley Ice</em> is a trusted ice manufacturer in the UAE, delivering high-quality ice products with strict hygiene standards and consistent supply. Our modern production facility ensures dependable service for commercial and industrial customers.
               <br><br>We support hotels, restaurants, fisheries, food processing units, medical facilities, and events with fast response and on-time delivery.</p>
-              <a href="" class="filled-button">Contact Now</a>
+              <a href="contact.html" class="filled-button">Contact Now</a>
             </div>
           </div>
           <div class="col-md-6 align-self-center">
@@ -492,6 +492,36 @@
     </div>
 
 
+    <!-- WhatsApp Modal start -->
+    <div id="whatsapp-sidebar" class="wa-sidebar">
+        <div class="wa-header ">
+            <h4>Connect with Us</h4>
+            <button onclick="toggleSidebar()" class="close-btn">&times;</button>
+        </div>
+        
+        <div class="wa-form">
+            <input type="text" id="wa-name" placeholder="Your Name" required>
+            <input type="email" id="wa-email" placeholder="Your Email" required>
+            <textarea id="wa-message" placeholder="Delivery available for all ices"></textarea>
+            
+            <button type="button" onclick="sendToWhatsapp()" class="send-btn">
+                Send to WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <div class="floating_btn"  onclick="toggleSidebar()">
+          <div class="contact_icon">
+            <i class="fa fa-whatsapp my-float"></i>
+          </div>
+        </a>
+    </div>
+
+    <!-- whatsapp modal end -->
+
+
+
+
     <!-- Footer Starts Here -->
     <footer>
       <div class="container">
@@ -503,7 +533,7 @@
               <li><a rel="nofollow" href="https://fb.com/templatemo" target="_blank"><i class="fa fa-facebook"></i></a></li>
               <li><a href="#"><i class="fa fa-twitter"></i></a></li>
               <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-              <li><a href="#"><i class="fa fa-behance"></i></a></li>
+              <li><a href="#"><i class="fa fa-instagram"></i></a></li>
             </ul>
           </div>
           <div class="col-md-3 footer-item">
@@ -573,13 +603,13 @@
 
         <!-- floating whatsapp button -->
 
-    <div class="floating_btn">
+    <!-- <div class="floating_btn">
         <a target="_blank" href="https://wa.me/+9710525585537/+9710525585537">
           <div class="contact_icon">
             <i class="fa fa-whatsapp my-float"></i>
           </div>
         </a>
-    </div>
+    </div> -->
     <!-- floating whatsapp button -->
 
     <!-- Bootstrap core JavaScript -->
@@ -601,6 +631,35 @@
           t.style.color='#fff';
           }
       }
+    </script>
+
+    <!-- whatsapp modal -->
+    <script>
+      // 1. Open sidebar automatically on load
+window.onload = () => {
+    setTimeout(() => {
+        document.getElementById('whatsapp-sidebar').classList.add('active');
+    }, 1000); // Opens 1 second after page load
+};
+
+function toggleSidebar() {
+    document.getElementById('whatsapp-sidebar').classList.toggle('active');
+}
+
+function sendToWhatsapp() {
+    const phone = "+971521099087"; // REPLACE WITH YOUR NUMBER (with country code, no +)
+    
+    const name = document.getElementById('wa-name').value;
+    const email = document.getElementById('wa-email').value;
+    const message = document.getElementById('wa-message').value;
+
+    // Create the encoded message
+    const text = `Hello! %0A%0A*Name:* ${name}%0A*Email:* ${email}%0A*Message:* ${message}`;
+    
+    // Open WhatsApp URL
+    const url = `https://wa.me/${phone}?text=${text}`;
+    window.open(url, '_blank').focus();
+}
     </script>
 
   </body>
