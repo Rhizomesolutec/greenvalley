@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* ── Green delivery banner ── */
+.delivery-banner {
+  background-color: #8dc63f; /* match your green */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32px 48px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ── Arrows container ── */
+.arrows-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+  justify-content: center;
+}
+
+/* ── Each arrow chevron ── */
+.arrow {
+  color: #4a90d9;          /* blue color matching your screenshot */
+  font-size: 48px;
+  opacity: 0;
+  animation: slideRight 1.8s ease-in-out infinite;
+}
+
+/* ── Stagger each arrow's delay ── */
+.arrow:nth-child(1) { animation-delay: 0s; }
+.arrow:nth-child(2) { animation-delay: 0.2s; }
+.arrow:nth-child(3) { animation-delay: 0.4s; }
+.arrow:nth-child(4) { animation-delay: 0.6s; }
+.arrow:nth-child(5) { animation-delay: 0.8s; }
+
+/* ── The keyframe: fade in + slide right, then fade out ── */
+@keyframes slideRight {
+  0%   { opacity: 0;   transform: translateX(-20px); }
+  30%  { opacity: 1;   transform: translateX(0px);   }
+  70%  { opacity: 1;   transform: translateX(10px);  }
+  100% { opacity: 0;   transform: translateX(30px);  }
+}
+
+/* ── Button ── */
+.get-it-btn {
+  border: 2px solid white;
+  color: white;
+  padding: 12px 28px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  white-space: nowrap;
+  transition: background 0.3s;
+}
+.get-it-btn:hover {
+  background: rgba(255,255,255,0.2);
+}
+    </style>
+</head>
+<body>
+        <!-- Your green banner section HTML structure -->
+    <section class="delivery-banner">
+    <div class="banner-content">
+        <h2>Your Ice Is Ready For Delivery</h2>
+        <p>Bringing the chill to you. Expert ice delivery for Dubai and the UAE.</p>
+    </div>
+
+    <div class="arrows-container">
+        <span class="arrow">&#10097;&#10097;</span>
+        <span class="arrow">&#10097;&#10097;</span>
+        <span class="arrow">&#10097;&#10097;</span>
+        <span class="arrow">&#10097;&#10097;</span>
+        <span class="arrow">&#10097;&#10097;</span>
+    </div>
+
+    <a href="#" class="get-it-btn">GET IT NOW</a>
+    </section>
+</body>
+</html>
