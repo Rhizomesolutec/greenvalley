@@ -1,86 +1,337 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        /* ── Green delivery banner ── */
-.delivery-banner {
-  background-color: #8dc63f; /* match your green */
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 32px 48px;
-  overflow: hidden;
-  position: relative;
-}
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dubai Ice Delivery Coverage</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;600;800&family=Barlow:wght@300;400&display=swap" rel="stylesheet"/>
 
-/* ── Arrows container ── */
-.arrows-container {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  flex: 1;
-  justify-content: center;
-}
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* ── Each arrow chevron ── */
-.arrow {
-  color: #4a90d9;          /* blue color matching your screenshot */
-  font-size: 48px;
-  opacity: 0;
-  animation: slideRight 1.8s ease-in-out infinite;
-}
+    /* ── Section wrapper ── */
+    .coverage-section {
+      background: #0d1f0d;
+      padding: 90px 60px;
+      font-family: 'Barlow', sans-serif;
+      position: relative;
+      overflow: hidden;
+    }
 
-/* ── Stagger each arrow's delay ── */
-.arrow:nth-child(1) { animation-delay: 0s; }
-.arrow:nth-child(2) { animation-delay: 0.2s; }
-.arrow:nth-child(3) { animation-delay: 0.4s; }
-.arrow:nth-child(4) { animation-delay: 0.6s; }
-.arrow:nth-child(5) { animation-delay: 0.8s; }
+    /* subtle grid overlay */
+    .coverage-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(141,198,63,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(141,198,63,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
 
-/* ── The keyframe: fade in + slide right, then fade out ── */
-@keyframes slideRight {
-  0%   { opacity: 0;   transform: translateX(-20px); }
-  30%  { opacity: 1;   transform: translateX(0px);   }
-  70%  { opacity: 1;   transform: translateX(10px);  }
-  100% { opacity: 0;   transform: translateX(30px);  }
-}
+    /* ── Top label ── */
+    .coverage-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #8dc63f;
+      margin-bottom: 24px;
+    }
+    .coverage-eyebrow::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 2px;
+      background: #8dc63f;
+    }
 
-/* ── Button ── */
-.get-it-btn {
-  border: 2px solid white;
-  color: white;
-  padding: 12px 28px;
-  border-radius: 30px;
-  text-decoration: none;
-  font-weight: bold;
-  white-space: nowrap;
-  transition: background 0.3s;
-}
-.get-it-btn:hover {
-  background: rgba(255,255,255,0.2);
-}
-    </style>
+    /* ── Heading ── */
+    .coverage-heading {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(42px, 6vw, 72px);
+      font-weight: 800;
+      line-height: 1;
+      color: #ffffff;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      letter-spacing: -1px;
+    }
+    .coverage-heading span {
+      color: #8dc63f;
+    }
+
+    /* ── Sub text ── */
+    .coverage-sub {
+      font-size: 15px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.45);
+      max-width: 380px;
+      line-height: 1.7;
+      margin-bottom: 60px;
+    }
+
+    /* ── Two-column layout ── */
+    .coverage-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    /* ── Zones list ── */
+    .zones-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+
+    .zone-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 20px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(141,198,63,0.1);
+      transition: background 0.25s, border-color 0.25s;
+      cursor: default;
+    }
+    .zone-item:hover {
+      background: rgba(141,198,63,0.07);
+      border-color: rgba(141,198,63,0.35);
+    }
+
+    .zone-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #8dc63f;
+      flex-shrink: 0;
+      box-shadow: 0 0 8px rgba(141,198,63,0.6);
+      animation: pulse-dot 2.4s ease-in-out infinite;
+    }
+    /* stagger pulse per item */
+    .zone-item:nth-child(2) .zone-dot { animation-delay: 0.3s; }
+    .zone-item:nth-child(3) .zone-dot { animation-delay: 0.6s; }
+    .zone-item:nth-child(4) .zone-dot { animation-delay: 0.9s; }
+    .zone-item:nth-child(5) .zone-dot { animation-delay: 1.2s; }
+    .zone-item:nth-child(6) .zone-dot { animation-delay: 1.5s; }
+    .zone-item:nth-child(7) .zone-dot { animation-delay: 1.8s; }
+    .zone-item:nth-child(8) .zone-dot { animation-delay: 2.1s; }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1;   transform: scale(1);   }
+      50%       { opacity: 0.4; transform: scale(0.7); }
+    }
+
+    .zone-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      color: rgba(255,255,255,0.75);
+      text-transform: uppercase;
+    }
+
+    /* ── Right side ── */
+    .coverage-right {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    /* stat cards */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .stat-card {
+      padding: 28px 20px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(141,198,63,0.1);
+      text-align: center;
+    }
+    .stat-number {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 38px;
+      font-weight: 800;
+      color: #8dc63f;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-label {
+      font-size: 11px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* note block */
+    .coverage-note {
+      padding: 24px 28px;
+      border-left: 3px solid #8dc63f;
+      background: rgba(141,198,63,0.05);
+    }
+    .coverage-note p {
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.75;
+    }
+    .coverage-note strong {
+      color: #fff;
+      font-weight: 400;
+    }
+
+    /* CTA */
+    .coverage-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: #8dc63f;
+      color: #0d1f0d;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 16px 32px;
+      transition: background 0.25s, gap 0.25s;
+      align-self: flex-start;
+    }
+    .coverage-cta:hover {
+      background: #a4d94a;
+      gap: 18px;
+    }
+    .coverage-cta svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .coverage-section { padding: 60px 24px; }
+      .coverage-body { grid-template-columns: 1fr; gap: 40px; }
+      .stats-row { grid-template-columns: repeat(3, 1fr); }
+    }
+  </style>
+  
 </head>
 <body>
-        <!-- Your green banner section HTML structure -->
-    <section class="delivery-banner">
-    <div class="banner-content">
-        <h2>Your Ice Is Ready For Delivery</h2>
-        <p>Bringing the chill to you. Expert ice delivery for Dubai and the UAE.</p>
+
+<section class="coverage-section">
+
+  <div class="coverage-eyebrow">Coverage Area</div>
+
+  <h2 class="coverage-heading">
+    Ice Delivery<br>Across <span>Dubai</span>
+  </h2>
+
+  <p class="coverage-sub">
+    We deliver premium ice to every corner of Dubai — same-day, on schedule, no minimum too small.
+  </p>
+
+  <div class="coverage-body">
+
+    <!-- Left: Zone list -->
+    <div class="zones-grid">
+
+      <div class="zone-item">
+        <span class="zone-dot"></span>
+        <span class="zone-name">Deira</span>
+      </div>
+      <div class="zone-item">
+        <span class="zone-dot"></span>
+        <span class="zone-name">Bur Dubai</span>
+      </div>
+      <div class="zone-item">
+        <span class="zone-dot"></span>
+        <span class="zone-name">Downtown</span>
+      </div>
+      <div class="zone-item">
+        <span class="zone-dot"></span>
+        <span class="zone-name">JBR</span>
+      </div>
+      <div class="zone-item">
+        <span class="zone-dot"></span>
+        <span class="zone-name">Al Quoz</span>
+      </div>
+      <div class="zone-item">
+        <span class="zone-dot"></span>
+        <span class="zone-name">Jumeirah</span>
+      </div>
+      <div class="zone-item">
+        <span class="zone-dot"></span>
+        <span class="zone-name">Business Bay</span>
+      </div>
+      <div class="zone-item">
+        <span class="zone-dot"></span>
+        <span class="zone-name">Al Barsha</span>
+      </div>
+      <div class="zone-item">
+        <span class="zone-dot"></span>
+        <span class="zone-name">Dubai Marina</span>
+      </div>
+      <div class="zone-item">
+        <span class="zone-dot"></span>
+        <span class="zone-name">Mirdif</span>
+      </div>
+      <div class="zone-item">
+        <span class="zone-dot"></span>
+        <span class="zone-name">Silicon Oasis</span>
+      </div>
+      <div class="zone-item">
+        <span class="zone-dot"></span>
+        <span class="zone-name">Jebel Ali</span>
+      </div>
+
     </div>
 
-    <div class="arrows-container">
-        <span class="arrow">&#10097;&#10097;</span>
-        <span class="arrow">&#10097;&#10097;</span>
-        <span class="arrow">&#10097;&#10097;</span>
-        <span class="arrow">&#10097;&#10097;</span>
-        <span class="arrow">&#10097;&#10097;</span>
+    <!-- Right: Stats + note + CTA -->
+    <div class="coverage-right">
+
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-number">30+</div>
+          <div class="stat-label">Areas covered</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">2hr</div>
+          <div class="stat-label">Avg delivery</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">24/7</div>
+          <div class="stat-label">Available</div>
+        </div>
+      </div>
+
+      <div class="coverage-note">
+        <p>
+          Don't see your area? <strong>We still deliver.</strong> Our fleet covers all of Dubai and surrounding Emirates. Call us and we'll confirm your slot within minutes.
+        </p>
+      </div>
+
+      <a href="#contact" class="coverage-cta">
+        Order Now
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 8h10M9 4l4 4-4 4"/>
+        </svg>
+      </a>
+
     </div>
 
-    <a href="#" class="get-it-btn">GET IT NOW</a>
-    </section>
+  </div>
+
+</section>
+
 </body>
 </html>
